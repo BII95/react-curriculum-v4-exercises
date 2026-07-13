@@ -12,8 +12,8 @@ export default function StudentWork() {
       {/* add JSX here */}
       <p>
         {' '}
-        Hi im Bryan! I am 23,from Houston, and I am a first-gen graduate from UT
-        Austin. I am taking CTD courses to expand or open opportunities for
+        Hi im Bryan! I am 23 ,from Houston, and I am a first-gen graduate from
+        UT Austin. I am taking CTD courses to expand or open opportunities for
         myself. Outside of programming my hobbies include baking, going to the
         gym, being a foodie, and football. I like to bake because it is work you
         can reward yourself with. I enjoy following recipes to make sweet treats
