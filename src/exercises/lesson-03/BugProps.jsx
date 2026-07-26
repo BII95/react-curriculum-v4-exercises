@@ -30,3 +30,4 @@ export default function BugProps({ name = 'friend' }) {
 
 // Explanation:
 // (Write your explanation here)
+//This bug occured because the greeting messsage was stored in a variable instead of React state. I changed it to store the message in useState by importing it and updating it with the setter function. On the click React now recognixed the change and offfers a different greeting.

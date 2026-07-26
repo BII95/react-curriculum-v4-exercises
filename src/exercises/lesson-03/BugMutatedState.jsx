@@ -26,3 +26,4 @@ export default function BugMutatedState() {
 
 // Explanation:
 // (Write your explanation here)
+//Originally this bug occured because React does not recognize updates made to variables. React state should be updated using useState. When set Count is updated by one then that allows React to re-render with the updated value. This is done functionally by taking the old value prev and adding to it.
