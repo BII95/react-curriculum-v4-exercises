@@ -7,8 +7,6 @@ import BugProps from './BugProps.jsx';
 export default function StudentWork() {
   return (
     <div>
-      <p>Student output will go here</p>
-
       <BugEffectLoop></BugEffectLoop>
       <BugMutatedState></BugMutatedState>
       <BugProps></BugProps>
