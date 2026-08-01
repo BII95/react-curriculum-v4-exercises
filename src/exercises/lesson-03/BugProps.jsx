@@ -11,12 +11,13 @@
 
   Use the commented "Explanation" section at the bottom of this lesson's components.
 */
+import { useState } from 'react';
 
 export default function BugProps({ name = 'friend' }) {
-  let message = 'Hello, ' + name;
+  const [message, setMessage] = useState('Hello, ' + name);
 
   function handleChange() {
-    message = 'Hi, ' + name + '!';
+    setMessage('Hi, ' + name + ' !');
   }
 
   return (
@@ -29,3 +30,4 @@ export default function BugProps({ name = 'friend' }) {
 
 // Explanation:
 // (Write your explanation here)
+//This bug occured because the greeting messsage was stored in a variable instead of React state. I changed it to store the message in useState by importing it and updating it with the setter function. On the click React now recognixed the change and offfers a different greeting.
