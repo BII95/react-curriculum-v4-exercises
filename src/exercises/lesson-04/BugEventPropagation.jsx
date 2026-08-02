@@ -1,12 +1,13 @@
 // TOPIC: Event Bubbling & Stopping Propagation
 // TASK: Ensure only the inner button's action triggers an alert when the button is pushed
-import { useRef } from 'react';
+
 export default function BugEventPropagation() {
   function handleOuterClick() {
-    let clickRef = useRef(null);
+    alert("RED BOX CLICKED ❌ Don't show me!");
   }
 
-  function handleInnerClick() {
+  function handleInnerClick(event) {
+    event.stopPropagation();
     alert('Button Clicked ✅');
   }
 
