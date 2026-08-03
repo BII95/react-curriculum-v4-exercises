@@ -17,3 +17,6 @@ export default function FillRefFocus() {
     </div>
   );
 }
+
+//
+// useRef hook references the input element and called its focus method when the button is clicked.After this, the cursor goes inside the input field automatically when the button is clicked. This is the appropriate hook because it gives acces to the DOM element and it does not cause a re-render for the rest of the page.

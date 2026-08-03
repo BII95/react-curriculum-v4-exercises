@@ -1,12 +1,11 @@
 // TOPIC: Choose the correct tool: useRef vs useState
 // TASK: Make sure it updates the text *without* triggering a re-render
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 export default function FindCorrectHook() {
   const [clickCount, setClicks] = useState(0);
-  const countRef = useRef(null);
 
   function handleClick() {
-    countRef.current = setClicks((prev) => prev + 1);
+    setClicks((prev) => prev + 1);
   }
 
   return (
@@ -16,3 +15,4 @@ export default function FindCorrectHook() {
     </div>
   );
 }
+//In this exercise useState was used to manage the click counter. Value is displayed in UI so to change that react must re render. setClicks updates the state functionally and allows the button's displayed cout to increment with each click.

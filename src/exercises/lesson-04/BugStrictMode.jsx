@@ -22,3 +22,5 @@ export default function BugStrictMode() {
 }
 
 // Write your explanation of how StrictMode helps us catch this bug
+
+//StrictMode helps us catch this bug by double rendering components. This finds functions with sideeffects and memory leaks.In this case useEffect created multiple intervals running simultaneously. This was fixed by running an empty dependency array and a cleanup function to remove the interval on unmount.
