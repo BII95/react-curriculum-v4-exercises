@@ -6,7 +6,8 @@ export default function BugEventPropagation() {
     alert("RED BOX CLICKED ❌ Don't show me!");
   }
 
-  function handleInnerClick() {
+  function handleInnerClick(event) {
+    event.stopPropagation();
     alert('Button Clicked ✅');
   }
 
@@ -22,3 +23,6 @@ export default function BugEventPropagation() {
     </>
   );
 }
+//explanation
+
+//Event bubbling triggered the click handler attached to the parent div. The event.stopPropagation call prevented this. When the button is now clicked it correctly only display the check mark while anywhere else the x mark triggers the other alert.
