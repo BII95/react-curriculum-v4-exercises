@@ -28,9 +28,31 @@ export default function SnackForm({
 
   function handleSubmit(e) {
     e.preventDefault();
-    name;
-    rating;
+    const nameIsV = validateName();
+    const ratingIsV = validateRating();
+    if (!nameIsV || !ratingIsV) {
+      setTouched({
+        name: true,
+        rating: true,
+      });
+      return;
+    }
+
+    if (isEditing) {
+      updateSnack(editingSnack.id, name, rating);
+    } else {
+      addSnack(name, rating);
+
+      setName('');
+      setRating('');
+
+      setTouched({
+        name: false,
+        rating: false,
+      });
+    }
   }
+
   function validateName() {
     return name.trim() !== '';
   }
