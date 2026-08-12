@@ -24,7 +24,7 @@ export default function SnackForm({
       name: false,
       rating: false,
     });
-  }, [editingSnack]);
+  }, [editingSnack, isEditing]);
 
   function handleSubmit(e) {
     e.preventDefault();
