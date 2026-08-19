@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import UserProfile from './components/UserProfile';
+import { filterTasks } from './utils/filterTasks';
 
 export default function StudentWork() {
   const studentName = 'Bryan';
   const [tasks, setTasks] = useState([]);
   const [filter, setFilter] = useState('all');
-  const [loading, setLoading] = useState(true);
+  // const [loading, setLoading] = useState(true);
 
   //  #1: Data fetching + state + UI logic all mixed together
   useEffect(() => {
@@ -15,24 +16,14 @@ export default function StudentWork() {
         { id: 2, title: 'Refactor code', completed: false },
         { id: 3, title: 'Organize files', completed: false },
       ]);
-      setLoading(false);
+      // setLoading(false);
     }, 500);
 
     return () => clearTimeout(timeout);
   }, []);
 
   // #2: Filtering logic inside component
-  let visibleTasks = tasks;
-  if (filter === 'completed') {
-    visibleTasks = tasks.filter((task) => task.completed);
-  }
-  if (filter === 'pending') {
-    visibleTasks = tasks.filter((task) => !task.completed);
-  }
-
-  if (loading) {
-    return <p>Loading tasks...</p>;
-  }
+  const visibleTasks = filterTasks(tasks, filter);
 
   return (
     <div>

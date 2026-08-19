@@ -1,1 +1,1 @@
-export default function taskFilter() {}
+export default function TaskFilter() {}
