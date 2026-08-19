@@ -6,7 +6,7 @@ export default function StudentWork() {
   const studentName = 'Bryan';
   const [tasks, setTasks] = useState([]);
   const [filter, setFilter] = useState('all');
-  // const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
 
   //  #1: Data fetching + state + UI logic all mixed together
   useEffect(() => {
@@ -16,17 +16,18 @@ export default function StudentWork() {
         { id: 2, title: 'Refactor code', completed: false },
         { id: 3, title: 'Organize files', completed: false },
       ]);
-      // setLoading(false);
+      setLoading(false);
     }, 500);
 
     return () => clearTimeout(timeout);
   }, []);
 
-  // #2: Filtering logic inside component
+  // #2: filterTasks done
   const visibleTasks = filterTasks(tasks, filter);
 
   return (
     <div>
+      {/*#3 userprof done */}
       <UserProfile studentName={studentName} />
 
       {/* #4: Repeated button JSX */}
