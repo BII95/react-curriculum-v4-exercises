@@ -1,32 +1,22 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import UserProfile from './components/UserProfile';
 import { filterTasks } from './utils/filterTasks';
 import TaskFilterButtons from './components/TaskFilterButtons';
 import SingleTask from './components/singleTask';
-
+import useTasks from './hooks/useTasks';
 export default function StudentWork() {
   const studentName = 'Bryan';
-  const [tasks, setTasks] = useState([]);
+  // const [tasks, setTasks] = useState([]);
   const [filter, setFilter] = useState('all');
-  const [loading, setLoading] = useState(true);
+  // const [loading, setLoading] = useState(true);
 
   //  #1: Data fetching + state + UI logic all mixed together
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setTasks([
-        { id: 1, title: 'Learn React', completed: true },
-        { id: 2, title: 'Refactor code', completed: false },
-        { id: 3, title: 'Organize files', completed: false },
-      ]);
-      setLoading(false);
-    }, 500);
-
-    return () => clearTimeout(timeout);
-  }, []);
-
+  const { tasks, loading } = useTasks();
   // #2: filterTasks done
   const visibleTasks = filterTasks(tasks, filter);
-
+  if (loading) {
+    return <p>Loading tasks...</p>;
+  }
   return (
     <div>
       {/*#3 userprof done */}
