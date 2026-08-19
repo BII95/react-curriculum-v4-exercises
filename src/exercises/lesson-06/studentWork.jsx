@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import UserProfile from './components/UserProfile';
 import { filterTasks } from './utils/filterTasks';
 import TaskFilterButtons from './components/TaskFilterButtons';
+import SingleTask from './components/singleTask';
 
 export default function StudentWork() {
   const studentName = 'Bryan';
@@ -31,22 +32,14 @@ export default function StudentWork() {
       {/*#3 userprof done */}
       <UserProfile studentName={studentName} />
 
-      {/* #4: Repeated button JSX */}
+      {/* #4:filter buttons done */}
       <div>
-        <button onClick={() => setFilter('all')}>All</button>
-        <button onClick={() => setFilter('completed')}>Completed</button>
-        <button onClick={() => setFilter('pending')}>Pending</button>
-        <p>Current filter: {filter}</p>
+        <TaskFilterButtons filter={filter} setFilter={setFilter} />
       </div>
-
       {/* #5: Inline list rendering */}
-      <ul>
-        {visibleTasks.map((task) => (
-          <li key={task.id}>
-            {task.title} {task.completed ? '✅' : '⏳'}
-          </li>
-        ))}
-      </ul>
+      <div>
+        <SingleTask visibleTasks={visibleTasks} />
+      </div>
     </div>
   );
 }

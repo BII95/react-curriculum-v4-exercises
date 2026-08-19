@@ -1,1 +1,11 @@
-export default function singleTask() {}
+export default function SingleTask({ visibleTasks }) {
+  return (
+    <ul>
+      {visibleTasks.map((task) => (
+        <li key={task.id}>
+          {task.title} {task.completed ? '✅' : '⏳'}
+        </li>
+      ))}
+    </ul>
+  );
+}
