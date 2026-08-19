@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import UserProfile from './components/UserProfile';
 import { filterTasks } from './utils/filterTasks';
+import TaskFilterButtons from './components/TaskFilterButtons';
 
 export default function StudentWork() {
   const studentName = 'Bryan';
