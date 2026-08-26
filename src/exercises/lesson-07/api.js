@@ -1,4 +1,4 @@
-const POSTS_ENDPOINT = 'https://jsonplaceholder.typicode.com/posts/';
+const POSTS_ENDPOINT = 'https://jsonplaceholder.typicode.com/posts/?_limit=10';
 
 /**
  * Instructions:
@@ -22,14 +22,12 @@ const POSTS_ENDPOINT = 'https://jsonplaceholder.typicode.com/posts/';
  * - title
  * - body
  */
-export function getPosts() {
-  console.log('[getPosts]: fetching list of posts');
-
-  // TODO: use this `url` const to fetch the list of posts
-  // and return some JSON data.
-  // You may delete this comment once you've finished the implementation.
-  // eslint-disable-next-line no-unused-vars
+export async function getPosts() {
   const url = POSTS_ENDPOINT;
+  console.log('[getPosts]: fetching list of posts');
+  const resp = await fetch(url);
+  if (!resp.ok) throw new Error(resp.status);
+  return resp.json();
 }
 
 /**
