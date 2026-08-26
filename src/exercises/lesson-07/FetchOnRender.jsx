@@ -9,6 +9,7 @@ export default function FetchOnRender() {
       try {
         const data = await getPosts();
         setPosts(data);
+        console.log(data);
       } catch (error) {
         console.error(error);
       }

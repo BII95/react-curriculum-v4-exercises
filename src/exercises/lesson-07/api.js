@@ -37,16 +37,14 @@ export async function getPosts() {
  * - title
  * - body
  */
-export function getSinglePost(postId) {
+export async function getSinglePost(postId) {
+  const newEndpoint = 'https://jsonplaceholder.typicode.com/posts/';
+  const url = `${newEndpoint}${postId}`;
   if (!postId) {
     throw new Error('[getSinglePost]: postId parameter is required!');
   }
-
   console.log('[getSinglePost]: fetching post with id:', postId);
-
-  // TODO: use this `url` const to fetch the single post
-  // and return some JSON data.
-  // You may delete this comment once you've finished the implementation.
-  // eslint-disable-next-line no-unused-vars
-  const url = `${POSTS_ENDPOINT}${postId}`;
+  const resp = await fetch(url);
+  if (!resp.ok) throw new Error(resp.status);
+  return resp.json();
 }
