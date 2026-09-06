@@ -94,13 +94,63 @@ export function QuestionItem({ question }) {
       {question.type === QUESTION_TYPES.MULTIPLE_CHOICE && (
         <div className={styles['options-section']}>
           <h4>Answer Options:</h4>
+
           <ul>
             {question.options.map((option, index) => (
               <li key={index} className={styles['option-item']}>
-                <span className={styles['option-text']}>{option}</span>
+                {isEditing ? (
+                  <>
+                    <input
+                      defaultValue={option}
+                      onBlur={(e) => {
+                        dispatch({
+                          type: 'UPDATE_OPTION_TEXT',
+                          payload: {
+                            questionId: question.id,
+                            optionIndex: index,
+                            newText: e.target.value,
+                          },
+                        });
+                      }}
+                    />
+
+                    <button
+                      onClick={() => {
+                        dispatch({
+                          type: 'DELETE_OPTION_FROM_QUESTION',
+                          payload: {
+                            questionId: question.id,
+                            optionIndex: index,
+                          },
+                        });
+                      }}
+                      disabled={question.options.length <= 2}
+                    >
+                      Delete
+                    </button>
+                  </>
+                ) : (
+                  <span className={styles['option-text']}>{option}</span>
+                )}
               </li>
             ))}
           </ul>
+
+          {isEditing && (
+            <button
+              onClick={() => {
+                dispatch({
+                  type: 'ADD_OPTION_TO_QUESTION',
+                  payload: {
+                    questionId: question.id,
+                    optionText: 'New Option',
+                  },
+                });
+              }}
+            >
+              + Add Option
+            </button>
+          )}
         </div>
       )}
     </div>
