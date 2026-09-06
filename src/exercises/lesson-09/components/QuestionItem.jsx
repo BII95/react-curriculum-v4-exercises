@@ -6,7 +6,8 @@ import styles from '../StudentWork.module.css';
 // Question Item Component - Students will add Edit/Delete functionality here
 export function QuestionItem({ question }) {
   //HINT: use these with controlled form
-  const [workingText, setWorkingText] = useState(question.question);
+  const [workingText, setWorkingText] = useState(question.questions);
+  const [workingOptions, setWorkingOptions] = useState(question.options);
   const { state, dispatch } = useContext(SurveyContext);
   const isEditing = state.ui.editingQuestionId === question.id;
 
@@ -105,18 +106,28 @@ export function QuestionItem({ question }) {
                 {isEditing ? (
                   <>
                     <input
-                      defaultValue={option}
-                      onBlur={(e) => {
+                      value={workingOptions[index] ?? option}
+                      onChange={(e) => {
+                        const updatedOptions = [...workingOptions];
+                        updatedOptions[index] = e.target.value;
+                        setWorkingOptions(updatedOptions);
+                      }}
+                    />
+
+                    <button
+                      onClick={() => {
                         dispatch({
                           type: 'UPDATE_OPTION_TEXT',
                           payload: {
                             questionId: question.id,
                             optionIndex: index,
-                            newText: e.target.value,
+                            newText: workingOptions[index],
                           },
                         });
                       }}
-                    />
+                    >
+                      Save
+                    </button>
 
                     <button
                       onClick={() => {
@@ -127,6 +138,10 @@ export function QuestionItem({ question }) {
                             optionIndex: index,
                           },
                         });
+
+                        setWorkingOptions(
+                          workingOptions.filter((_, i) => i !== index)
+                        );
                       }}
                       disabled={question.options.length <= 2}
                     >
@@ -143,13 +158,19 @@ export function QuestionItem({ question }) {
           {isEditing && (
             <button
               onClick={() => {
-                dispatch({
-                  type: 'ADD_OPTION_TO_QUESTION',
-                  payload: {
-                    questionId: question.id,
-                    optionText: 'New Option',
-                  },
-                });
+                const newOption = prompt('Enter a new option:');
+
+                if (newOption) {
+                  dispatch({
+                    type: 'ADD_OPTION_TO_QUESTION',
+                    payload: {
+                      questionId: question.id,
+                      optionText: newOption,
+                    },
+                  });
+
+                  setWorkingOptions([...workingOptions, newOption]);
+                }
               }}
             >
               + Add Option

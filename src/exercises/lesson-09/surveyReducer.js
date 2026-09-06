@@ -123,7 +123,8 @@ export function surveyReducer(state, action) {
       return {
         ...state,
         questions: state.questions.map((q) =>
-          q.id === action.payload.questionId
+          q.id === action.payload.questionId &&
+          q.type === QUESTION_TYPES.MULTIPLE_CHOICE
             ? { ...q, options: [...q.options, action.payload.optionText] }
             : q
         ),
