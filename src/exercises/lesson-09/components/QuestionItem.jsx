@@ -51,7 +51,7 @@ export function QuestionItem({ question }) {
   // TODO: Students will add delete functionality here
   const handleDelete = () => {
     console.log('TODO: Implement delete functionality');
-    if (window.confirm('Delete this question?')) {
+    if (window.confirm('Are you sure you want to delete this question?')) {
       dispatch({
         type: 'DELETE_QUESTION',
         payload: {
@@ -69,9 +69,13 @@ export function QuestionItem({ question }) {
         </span>
         <div className={styles['question-actions']}>
           {/* TODO: Students add Edit and Delete buttons here */}
-          <button onClick={handleEdit}>{isEditing ? 'Cancel' : 'Edit'}</button>
+          <button className={styles['edit-btn']} onClick={handleEdit}>
+            {isEditing ? 'Cancel' : 'Edit'}
+          </button>
 
-          <button onClick={handleDelete}>Delete</button>
+          <button className={styles['delete-btn']} onClick={handleDelete}>
+            Delete
+          </button>
         </div>
       </div>
 
