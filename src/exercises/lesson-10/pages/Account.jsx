@@ -8,6 +8,7 @@ export default function Account({ user }) {
         If you can see this page, you are logged in as{' '}
         <strong>{user.firstName}</strong>.
       </p>
+      <Link path="/account"></Link>
     </section>
   );
 }

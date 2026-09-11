@@ -4,6 +4,7 @@ export default function Home({ products }) {
   return (
     <section>
       <h2>Home</h2>
+
       <p>
         Click a product to navigate to <code>/products/id</code>.
       </p>
@@ -25,16 +26,18 @@ export default function Home({ products }) {
               background: '#fff',
             }}
           >
-            <img
-              src={p.previewImage}
-              alt={p.name}
-              style={{
-                width: '100%',
-                height: 120,
-                objectFit: 'cover',
-                borderRadius: 8,
-              }}
-            />
+            <Link to={`/products/${p.id}`}>
+              <img
+                src={p.previewImage}
+                alt={p.name}
+                style={{
+                  width: '100%',
+                  height: 120,
+                  objectFit: 'cover',
+                  borderRadius: 8,
+                }}
+              />
+            </Link>
 
             <h3 style={{ margin: '10px 0 4px' }}>{p.name}</h3>
 
