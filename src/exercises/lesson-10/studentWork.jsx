@@ -51,8 +51,13 @@ export default function StudentWork() {
         <Routes>
           <Route path="/" element={<Home products={products} />} />
           <Route path="checkout" element={<Checkout />} />
-          <Route path="products/:id" element={<ProductDetails />} />
-          {user.isLoggedIn && <Route path="account" element={<Account />} />}
+          <Route
+            path="products/:id"
+            element={<ProductDetails products={products} />}
+          />
+          {user.isLoggedIn && (
+            <Route path="account" element={<Account user={user} />} />
+          )}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

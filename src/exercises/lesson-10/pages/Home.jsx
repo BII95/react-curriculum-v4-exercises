@@ -1,14 +1,12 @@
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
 export default function Home({ products }) {
   return (
     <section>
       <h2>Home</h2>
-
       <p>
         Click a product to navigate to <code>/products/id</code>.
       </p>
-
       <div
         style={{
           display: 'grid',
@@ -26,7 +24,7 @@ export default function Home({ products }) {
               background: '#fff',
             }}
           >
-            <Link to={`/products/${p.id}`}>
+            <Link to={`products/${p.id}`}>
               <img
                 src={p.previewImage}
                 alt={p.name}
@@ -38,9 +36,9 @@ export default function Home({ products }) {
                 }}
               />
             </Link>
-
-            <h3 style={{ margin: '10px 0 4px' }}>{p.name}</h3>
-
+            <Link to={`products/${p.id}`}>
+              <h3 style={{ margin: '10px 0 4px' }}>{p.name}</h3>
+            </Link>
             <p style={{ margin: 0 }}>
               <strong>${p.price.toFixed(2)}</strong>
             </p>
