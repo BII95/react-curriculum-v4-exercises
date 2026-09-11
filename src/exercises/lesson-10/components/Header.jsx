@@ -35,7 +35,7 @@ export default function Header({ user }) {
         </div>
 
         <nav style={{ marginTop: 12 }}>
-          <NavLink to="/lessons/lesson-10" style={navLinkStyles}>
+          <NavLink to="/lessons/lesson-10" end style={navLinkStyles}>
             Home
           </NavLink>
           <NavLink to="/lessons/lesson-10/checkout" style={navLinkStyles}>
