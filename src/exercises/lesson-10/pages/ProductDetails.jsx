@@ -1,10 +1,10 @@
 import { Link, useParams } from 'react-router';
 
 export default function ProductDetails({ products }) {
-  const id = null;
+  const { id } = useParams();
 
   const product = products.find((p) => p.id === id);
-
+  if (!product) return <p>Product not found</p>;
   return (
     <section>
       <h2>Product Details</h2>``
@@ -28,6 +28,7 @@ export default function ProductDetails({ products }) {
           No product found for id: <code>{String(id)}</code>
         </p>
       )}
+      <Link to="/lessons/lesson-10">Back to shop</Link>
       <div style={{ marginTop: 12 }}>Go Home</div>
     </section>
   );
